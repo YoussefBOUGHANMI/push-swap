@@ -6,7 +6,7 @@
 /*   By: Youssef <youssef.boughanmi.pro@gmail.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:10:03 by Youssef           #+#    #+#             */
-/*   Updated: 2022/05/31 17:00:57 by Youssef          ###   ########.fr       */
+/*   Updated: 2022/06/07 20:40:16 by Youssef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -100,10 +100,12 @@ int	check_double(int len_list, int *list_int)
 	return (0);
 }
 
-char	**get_return_error(void)
+char	**get_return_error(char **list, int len_list, int top_free_split)
 {
 	char	**error_return;
 
+	if (top_free_split == 1)
+		free_stack(list, len_list);
 	error_return = malloc(2 * sizeof(char *));
 	error_return[0] = "Error";
 	return (error_return);

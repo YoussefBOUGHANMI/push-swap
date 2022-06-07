@@ -6,13 +6,13 @@
 /*   By: Youssef <youssef.boughanmi.pro@gmail.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:51:49 by Youssef           #+#    #+#             */
-/*   Updated: 2022/05/31 19:55:23 by Youssef          ###   ########.fr       */
+/*   Updated: 2022/06/07 18:30:28 by Youssef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include "push_swap.h"
 
-void	do_push_swap(char **stack_a, int argc)
+void	do_push_swap(char **stack_a)
 {
 	int		ternary_len;
 	int		nb_el;
@@ -25,8 +25,8 @@ void	do_push_swap(char **stack_a, int argc)
 		push_swap_low(stack_a, stack_b, nb_el);
 	else
 		push_swap(stack_a, stack_b, ternary_len);
-	free_stack(stack_a, argc -1);
-	free_stack(stack_b, argc -1);
+	free_stack(stack_a, nb_el);
+	free_stack(stack_b, nb_el);
 }
 
 void	do_nothing(void)
@@ -51,6 +51,6 @@ int	main(int argc, char *argv[])
 			free_stack(stack_a, 0);
 		}
 		else
-			do_push_swap(stack_a, argc);
+			do_push_swap(stack_a);
 	}
 }

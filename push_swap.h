@@ -6,7 +6,7 @@
 /*   By: youssef <youssef.boughanmi.pro@gmail.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 18:01:09 by youssef           #+#    #+#             */
-/*   Updated: 2022/05/31 20:08:46 by Youssef          ###   ########.fr       */
+/*   Updated: 2022/06/07 20:42:43 by Youssef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	do_swap(char **stack);
 void	do_reverse(char **stack);
 void	reverse(char **stack, char stack_name);
 void	double_reverse(char **stack_a, char **stack_b);
-char	**get_return_error(void);
 int		check_double(int len_list, int *list_int);
 int		check_digital_condition(int len_list, char **list);
 int		check_biginit_condition(int len_list, char **list);
@@ -49,9 +48,10 @@ void	pw_low_first_step(char **stack_a, char **stack_b);
 void	pw_low_second_step(char **stack_a, char **stack_b);
 void	push_swap_low(char **stack_a, char **stack_b, int nb_el);
 int		check_minus_error(int len_list, char **list);
-char	**get_order_return(void);
 int		*transform_char_int(int len_list, char **list);
 int		check_all_error(int len_list, char **list);
 int		check_order(int len_list, int *list);
+char	**get_return_error(char **list, int len_list, int top_free_split);
+char	**get_order_return(char **list, int len_list, int top_free_split);
 
 #endif

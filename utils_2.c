@@ -6,7 +6,7 @@
 /*   By: Youssef <youssef.boughanmi.pro@gmail.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:10:52 by Youssef           #+#    #+#             */
-/*   Updated: 2022/05/31 20:01:15 by Youssef          ###   ########.fr       */
+/*   Updated: 2022/06/07 18:47:21 by Youssef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,14 @@ int	check_all_error(int len_list, char **list)
 	list_int = transform_char_int(len_list, list);
 	if (check_double(len_list, list_int) == 1)
 	{
+		free(list_int);
 		return (1);
 	}
 	if (check_order(len_list, list_int) == 1)
+	{
+		free(list_int);
 		return (2);
+	}
 	free(list_int);
 	return (0);
 }

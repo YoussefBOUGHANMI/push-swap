@@ -6,7 +6,7 @@
 /*   By: Youssef <youssef.boughanmi.pro@gmail.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 19:40:12 by Youssef           #+#    #+#             */
-/*   Updated: 2022/05/31 20:03:20 by Youssef          ###   ########.fr       */
+/*   Updated: 2022/06/07 20:42:16 by Youssef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -74,10 +74,12 @@ int	check_minus_error(int len_list, char **list)
 	return (0);
 }
 
-char	**get_order_return(void)
+char	**get_order_return(char **list, int len_list, int top_free_split)
 {
 	char	**error_return;
 
+	if (top_free_split == 1)
+		free_stack(list, len_list);
 	error_return = malloc (2 * sizeof(char *));
 	error_return[0] = "order";
 	return (error_return);

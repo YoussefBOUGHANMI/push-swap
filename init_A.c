@@ -6,7 +6,7 @@
 /*   By: Youssef <youssef.boughanmi.pro@gmail.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:47:30 by Youssef           #+#    #+#             */
-/*   Updated: 2022/05/31 16:25:23 by Youssef          ###   ########.fr       */
+/*   Updated: 2022/06/07 20:43:00 by Youssef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -80,7 +80,7 @@ char	**transform_rank_to_ternary(int len_list, int *list_rank)
 	return (list_rank_ternary);
 }
 
-char	**init_aa(int len_list, char **list)
+char	**init_aa(int len_list, char **list, int top_free_split)
 {
 	int		*list_int;
 	int		*list_rank;
@@ -91,16 +91,21 @@ char	**init_aa(int len_list, char **list)
 	list_rank_ternary = transform_rank_to_ternary(len_list, list_rank);
 	free(list_int);
 	free(list_rank);
+	if (top_free_split == 1)
+		free_stack(list, len_list);
 	return (list_rank_ternary);
 }
 
 char	**init_a(int len_list, char **list)
 {
 	char	**list_rank_ternary;
+	int		top_free_split;
 
+	top_free_split = 0;
 	if (len_list == 1)
 	{
 		list = ft_split(list[0], ' ');
+		top_free_split = 1;
 		len_list = 0;
 		while (list[len_list])
 			len_list++;
@@ -108,10 +113,10 @@ char	**init_a(int len_list, char **list)
 	if (check_all_error(len_list, list) != 0)
 	{
 		if (check_all_error(len_list, list) == 1)
-			return (get_return_error());
+			return (get_return_error(list, len_list, top_free_split));
 		else
-			return (get_order_return());
+			return (get_order_return(list, len_list, top_free_split));
 	}
-	list_rank_ternary = init_aa(len_list, list);
+	list_rank_ternary = init_aa(len_list, list, top_free_split);
 	return (list_rank_ternary);
 }
